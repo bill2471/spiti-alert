@@ -1,0 +1,49 @@
+name: spiti-alert
+
+on:
+  schedule:
+    # Μονά λεπτά ΕΚΤΟΣ στρογγυλής ώρας → πολύ λιγότερη συμφόρηση/καθυστέρηση στο GitHub.
+    # UTC 05:17, 10:17, 16:17 → Ελλάδα (θερινή ώρα): 08:17, 13:17, 19:17
+    - cron: "17 5,10,16 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: spiti-alert
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check for new listings
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          RECIPIENTS: ${{ secrets.RECIPIENTS }}
+          MS_TENANT_ID: ${{ secrets.MS_TENANT_ID }}
+          MS_CLIENT_ID: ${{ secrets.MS_CLIENT_ID }}
+          MS_CLIENT_SECRET: ${{ secrets.MS_CLIENT_SECRET }}
+          MAIL_FROM: ${{ secrets.MAIL_FROM }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        run: node src/index.js
+
+      - name: Commit updated state
+        run: |
+          git config user.name "spiti-alert bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add state/seen.json
+          git diff --cached --quiet || (git commit -m "ενημέρωση ιδωμένων αγγελιών" && git push)

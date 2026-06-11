@@ -1,0 +1,30 @@
+{
+ "1218438176": {
+  "firstSeen": "2026-06-10",
+  "price": 500,
+  "zone": "Νέα Μεσημβρία",
+  "score": 80,
+  "url": "https://www.spitogatos.gr/en/property/1218438176"
+ },
+ "1219517484": {
+  "firstSeen": "2026-06-10",
+  "price": 350,
+  "zone": "Νέα Μεσημβρία",
+  "score": 60,
+  "url": "https://www.spitogatos.gr/en/property/1219517484"
+ },
+ "1219521374": {
+  "firstSeen": "2026-06-10",
+  "price": 870,
+  "zone": "Ωραιόκαστρο",
+  "score": 92,
+  "url": "https://www.spitogatos.gr/en/property/1219521374",
+  "sentManually": true
+ },
+ "1219924504": {
+  "firstSeen": "2026-06-10",
+  "price": 600,
+  "zone": "Βαθύλακκος",
+  "url": "https://www.spitogatos.gr/en/property/1219924504"
+ }
+}

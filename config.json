@@ -1,0 +1,61 @@
+{
+  "maxPrice": 900,
+  "minSqMeters": 100,
+  "heartbeat": true,
+  "scoring": {
+    "minScore": 45,
+    "targetSqMeters": 120,
+    "targetBedrooms": 3
+  },
+  "construction": {
+    "minYear": 2000,
+    "renovationOverrideYear": 2015
+  },
+  "_recipients_note": "Οι παραλήπτες ορίζονται στο GitHub secret RECIPIENTS (comma-separated) — όχι εδώ, γιατί το repo είναι public.",
+  "recipients": [],
+  "startUrls": [
+    "https://www.spitogatos.gr/en/to_rent-homes/thessaloniki-rest-of-state/maxprice-900",
+    "https://www.spitogatos.gr/en/to_rent-homes/thessaloniki-suburbs/maxprice-900",
+    "https://www.spitogatos.gr/en/to_rent-homes/prefecture-kilkis/maxprice-900"
+  ],
+  "maxPages": 15,
+  "referencePoints": {
+    "work":   { "name": "Δουλειά (Νέα Χαλκηδόνα)", "lat": 40.7321, "lon": 22.6020 },
+    "school": { "name": "Σχολή Φρυγανιώτη (Πεύκα)", "lat": 40.6567, "lon": 22.9862 }
+  },
+  "greenZones": [
+    { "name": "Νέα Μεσημβρία",   "lat": 40.7535, "lon": 22.7729, "radiusKm": 5.0 },
+    { "name": "Κουφάλια",        "lat": 40.7786, "lon": 22.5776, "radiusKm": 4.0 },
+    { "name": "Πρόχωμα",         "lat": 40.7982, "lon": 22.6683, "radiusKm": 4.0 },
+    { "name": "Νέο Αγιονέρι",    "lat": 40.8102, "lon": 22.7062, "radiusKm": 4.0 },
+    { "name": "Βαθύλακκος",      "lat": 40.7689, "lon": 22.7082, "radiusKm": 3.0 },
+    { "name": "Άγιος Αθανάσιος", "lat": 40.7147, "lon": 22.7288, "radiusKm": 3.0 },
+    { "name": "Ωραιόκαστρο",     "lat": 40.7259, "lon": 22.9190, "radiusKm": 3.5 },
+    { "name": "Παλαιόκαστρο",    "lat": 40.7211, "lon": 22.9069, "radiusKm": 2.5 },
+    { "name": "Μελισσοχώρι",     "lat": 40.7680, "lon": 22.9286, "radiusKm": 3.0 },
+    { "name": "Δρυμός",          "lat": 40.7811, "lon": 22.9586, "radiusKm": 3.5 },
+    { "name": "Λητή",            "lat": 40.7444, "lon": 22.9794, "radiusKm": 3.0 },
+    { "name": "Νεοχωρούδα",      "lat": 40.7372, "lon": 22.8747, "radiusKm": 3.0 },
+    { "name": "Πεντάλοφος",      "lat": 40.7434, "lon": 22.8530, "radiusKm": 3.0 },
+    { "name": "Μεσαίο",          "lat": 40.7959, "lon": 22.8642, "radiusKm": 3.0 },
+    { "name": "Πετρωτό",         "lat": 40.8141, "lon": 22.8719, "radiusKm": 3.0 },
+    { "name": "Πεύκα / Ρετζίκι", "lat": 40.6581, "lon": 22.9890, "radiusKm": 2.5 },
+    { "name": "Φίλυρο",          "lat": 40.6922, "lon": 23.0033, "radiusKm": 3.0 },
+    { "name": "Ευκαρπία",        "lat": 40.6877, "lon": 22.9526, "radiusKm": 2.0 },
+    { "name": "Εξοχή",           "lat": 40.6285, "lon": 23.0430, "radiusKm": 2.5 }
+  ],
+  "redZones": [
+    { "name": "Σίνδος",            "lat": 40.6705, "lon": 22.8032, "radiusKm": 3.0 },
+    { "name": "ΒΙ.ΠΕ. Σίνδου",     "lat": 40.6650, "lon": 22.8350, "radiusKm": 4.0 },
+    { "name": "ΣΙΔΕΝΟΡ",           "lat": 40.7064, "lon": 22.8148, "radiusKm": 2.5 },
+    { "name": "Αγχίαλος",          "lat": 40.7147, "lon": 22.7806, "radiusKm": 2.0 },
+    { "name": "Χαλκηδόνα",         "lat": 40.7321, "lon": 22.6020, "radiusKm": 2.5 },
+    { "name": "Άδενδρο",           "lat": 40.6720, "lon": 22.6014, "radiusKm": 3.0 }
+  ],
+  "nameFallbackWhitelist": [
+    "Oraiokastro", "Oreokastro", "Koufalia", "Agios Athanasios", "Pefka",
+    "Filyro", "Chortiatis", "Efkarpia", "Mygdonia", "Kallithea",
+    "Neochorouda", "Pentalofos", "Drymos", "Melissochori", "Liti",
+    "Vathylakkos", "Prochoma", "Kilkis"
+  ]
+}
