@@ -443,6 +443,15 @@ async function sendEmail(matches) {
 }
 
 async function main() {
+  // Σιωπηλή παύση (π.χ. όσο είναι εξαντλημένο το δωρεάν Apify credit). Μέχρι τη
+  // δοθείσα ημερομηνία: κανένα τρέξιμο, κανένα email — ξαναρχίζει μόνο του μετά.
+  if (cfg.pauseUntil) {
+    const today = new Date().toISOString().slice(0, 10);
+    if (today < cfg.pauseUntil) {
+      console.log(`Σε παύση μέχρι ${cfg.pauseUntil} (σήμερα ${today}) — δεν τρέχω.`);
+      return;
+    }
+  }
   if (!APIFY_TOKEN) { console.error('Λείπει το APIFY_TOKEN'); process.exit(1); }
 
   const seen = fs.existsSync(STATE_FILE)

@@ -2,6 +2,8 @@
   "maxPrice": 900,
   "minSqMeters": 100,
   "heartbeat": true,
+  "_pauseNote": "Apify FREE credit εξαντλήθηκε· ανανεώνεται 29/6/2026. Μέχρι τότε ο έλεγχος μπαίνει σε σιωπηλή παύση (χωρίς email αποτυχίας). Σβήσε/άλλαξε αυτή τη γραμμή για να ξαναρχίσει νωρίτερα (π.χ. μετά από top-up).",
+  "pauseUntil": "2026-06-29",
   "scoring": {
     "minScore": 45,
     "targetSqMeters": 120,
