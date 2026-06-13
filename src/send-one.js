@@ -9,7 +9,8 @@ const [, , file, idArg] = process.argv;
 if (!file || !idArg) { console.error('Χρήση: node src/send-one.js <αρχείο.json> <listingId>'); process.exit(1); }
 
 const raw = fs.readFileSync(file, 'utf8');
-const items = JSON.parse(raw.charCodeAt(0) === 0xFEFF ? raw.slice(1) : raw);
+const parsed = JSON.parse(raw.charCodeAt(0) === 0xFEFF ? raw.slice(1) : raw);
+const items = Array.isArray(parsed) ? parsed : [parsed];
 const item = items.find((x) => String(x.id) === String(idArg));
 if (!item) { console.error(`Δεν βρέθηκε αγγελία με id ${idArg}`); process.exit(1); }
 

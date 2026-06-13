@@ -403,9 +403,27 @@ async function sendHeartbeat(stats) {
         <li><b>${stats.active}</b> ενεργές αγγελίες περνούν τα κριτήριά μας — όλες σας έχουν ήδη σταλεί.</li>
         <li>Καμία καινούργια αυτή τη φορά.</li>
       </ul>
-      <p style="color:#999;font-size:11px;">Επόμενοι αυτόματοι έλεγχοι: 08:00 · 13:00 · 19:00. Αυτόματο μήνυμα από το spiti-alert.</p>
+      <p style="color:#999;font-size:11px;">Έλεγχος 1×/μέρα. Αυτόματο μήνυμα από το spiti-alert.</p>
     </div>`;
   return deliver(subject, html);
+}
+
+// Email προειδοποίησης όταν αποτύχει ο scraper (π.χ. Apify 402 / χωρίς credit) —
+// για να μη μένει ποτέ ο χρήστης με σιωπή χωρίς να ξέρει γιατί.
+async function sendErrorAlert(message) {
+  const subject = '⚠️ Σπίτι-Alert: ο έλεγχος απέτυχε';
+  const apify402 = /402|payment required/i.test(message);
+  const hint = apify402
+    ? '<p style="font-size:13px;">Πιθανότατα εξαντλήθηκε το δωρεάν credit του Apify ($5/μήνα). Θα ξαναδουλέψει μόλις ανανεωθεί το όριο, ή με μικρό top-up.</p>'
+    : '';
+  const html = `
+    <div style="font-family:Segoe UI,sans-serif;max-width:640px;color:#444;">
+      <h3 style="margin:4px 0;color:#b23b3b;">⚠️ Σπίτι-Alert — ο έλεγχος απέτυχε</h3>
+      <p style="font-size:13px;">Δεν μπόρεσα να σκανάρω τις αγγελίες αυτή τη φορά. Καμία αγγελία δεν χάθηκε — απλώς δεν έγινε έλεγχος.</p>
+      ${hint}
+      <p style="font-size:12px;color:#888;">Λεπτομέρεια: ${String(message).slice(0, 300)}</p>
+    </div>`;
+  try { return await deliver(subject, html); } catch { return false; }
 }
 
 async function sendEmail(matches) {
@@ -431,7 +449,14 @@ async function main() {
     ? JSON.parse(fs.readFileSync(STATE_FILE, 'utf8'))
     : {};
 
-  const items = await runActor();
+  let items;
+  try {
+    items = await runActor();
+  } catch (e) {
+    console.error('Ο scraper απέτυχε:', e.message);
+    await sendErrorAlert(e.message);
+    process.exit(1);
+  }
   console.log(`Σκαναρίστηκαν ${items.length} αγγελίες συνολικά.`);
 
   const matches = [];

@@ -14,11 +14,11 @@
   "_recipients_note": "Οι παραλήπτες ορίζονται στο GitHub secret RECIPIENTS (comma-separated) — όχι εδώ, γιατί το repo είναι public.",
   "recipients": [],
   "startUrls": [
-    "https://www.spitogatos.gr/en/to_rent-homes/thessaloniki-rest-of-state/maxprice-900",
-    "https://www.spitogatos.gr/en/to_rent-homes/thessaloniki-suburbs/maxprice-900",
-    "https://www.spitogatos.gr/en/to_rent-homes/prefecture-kilkis/maxprice-900"
+    "https://www.spitogatos.gr/en/to_rent-homes/thessaloniki-rest-of-state/maxprice-900/sort-latest",
+    "https://www.spitogatos.gr/en/to_rent-homes/thessaloniki-suburbs/maxprice-900/sort-latest",
+    "https://www.spitogatos.gr/en/to_rent-homes/prefecture-kilkis/maxprice-900/sort-latest"
   ],
-  "maxPages": 15,
+  "maxPages": 2,
   "referencePoints": {
     "work":   { "name": "Δουλειά (Νέα Χαλκηδόνα)", "lat": 40.7321, "lon": 22.6020 },
     "school": { "name": "Σχολή Φρυγανιώτη (Πεύκα)", "lat": 40.6567, "lon": 22.9862 }
